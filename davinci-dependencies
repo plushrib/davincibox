@@ -30,3 +30,4 @@ xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
 patchelf
+akmod-nvidia
