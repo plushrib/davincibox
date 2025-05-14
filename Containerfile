@@ -16,9 +16,6 @@ RUN dnf -y update && \
     grep -v '^#' /davinci-dependencies | xargs dnf -y install
 RUN rm /davinci-dependencies
 
-#install rpmfusion
-RUN dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-RUN dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 FROM davincibox AS davincibox-opencl
 
@@ -31,4 +28,6 @@ RUN dnf -y install intel-compute-runtime rocm-opencl
 # so rusticl and ROCm can still co-exist
 RUN dnf -y install mesa-libOpenCL
 
-
+#install rpmfusion
+RUN dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+RUN dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
