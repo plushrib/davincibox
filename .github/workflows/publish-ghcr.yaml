@@ -1,0 +1,15 @@
+name: davincifork
+
+on:
+  push
+
+jobs:
+  build_and_publish:
+    runs-on: fedora-41
+    steps:
+      - uses: actions/cheakpoint@v3
+      - name: Build and push the image
+      - run: |
+        podman login --username plushrib --password-stdin ${{ secrets.le_token }} ghcr.io
+        podman build . -t ghcr.io/plushrib/davincifork:latest
+        podman push ghcr.io/plushrib/davincifork:latest
