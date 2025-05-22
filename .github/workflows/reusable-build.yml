@@ -91,6 +91,7 @@ jobs:
         uses: redhat-actions/push-to-registry@v2
         id: push
         env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           REGISTRY_USER: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ github.token }}
         with:
