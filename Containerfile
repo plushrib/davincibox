@@ -22,3 +22,6 @@ FROM davincibox AS davincibox-opencl
 # https://github.com/zelikos/davincibox/issues/173
 RUN dnf -y remove mesa-libOpenCL
 RUN dnf -y install intel-compute-runtime rocm-opencl
+
+RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-42.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-42.noarch.rpm
+RUN dnf -y install akmod-nvidia
