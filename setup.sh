@@ -38,7 +38,7 @@ get_gpu_type () {
         echo "ERROR: lshw not found. Could not determine GPU vendor."
         echo "Install the lshw package to use setup.sh,"
         echo "or follow the manual setup instructions instead:"
-        echo "https://github.com/zelikos/davincibox#manual"
+        echo "https://github.com/plushrib/davincibox#manual"
         exit 1
     fi
 }
@@ -77,10 +77,10 @@ create_davincibox_container () {
 
     # Do this separately here to ensure the latest image is present
     # before the container is created.
-    # See https://github.com/zelikos/davincibox/issues/26#issuecomment-1850642631
-    podman image pull "ghcr.io/zelikos/$davincibox_flavor:latest"
+    # See https://github.com/plushrib/davincibox/issues/26#issuecomment-1850642631
+    podman image pull "ghcr.io/plushrib/$davincibox_flavor:latest"
 
-    $container_create_prefix -i "ghcr.io/zelikos/$davincibox_flavor:latest"
+    $container_create_prefix -i "ghcr.io/plushrib/$davincibox_flavor:latest"
     # Ensure packages are up-to-date in case of old container build
     $container_run_prefix sudo dnf -y update
     $container_run_prefix echo "davincibox initialized"

@@ -16,12 +16,12 @@ RUN dnf -y update && \
     grep -v '^#' /davinci-dependencies | xargs dnf -y install
 RUN rm /davinci-dependencies
 
+RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+RUN dnf -y install akmod-nvidia
+
 FROM davincibox AS davincibox-opencl
 
 # Remove mesa-libOpenCL since it breaks rocm-opencl
 # https://github.com/zelikos/davincibox/issues/173
 RUN dnf -y remove mesa-libOpenCL
 RUN dnf -y install intel-compute-runtime rocm-opencl
-
-RUN dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-42.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-42.noarch.rpm
-RUN dnf -y install akmod-nvidia
